@@ -1,6 +1,6 @@
 # Data & Configuration Kit — Documentation Index
 
-This kit governs configuration management, feature flag lifecycle, and data schema evolution across environments. It is Layer 11 of the AIEOS system (cross-cutting).
+This kit governs configuration management, feature flag lifecycle, data schema evolution, and data migration planning across environments. It is Layer 11 of the AIEOS system (cross-cutting).
 
 ---
 
@@ -43,6 +43,15 @@ This kit governs configuration management, feature flag lifecycle, and data sche
 | Template | `artifacts/dsr-template.md` | DSR structure |
 | Prompt | `prompts/dsr-prompt.md` | Generation instructions |
 | Validator | `validators/dsr-validator.md` | Pass/fail evaluation |
+
+### Data Migration Record (DMR)
+
+| File | Location | Purpose |
+|------|----------|---------|
+| Spec | `specs/dmr-spec.md` | Content rules and 5 hard gates |
+| Template | `artifacts/dmr-template.md` | DMR structure |
+| Prompt | `prompts/dmr-prompt.md` | Generation instructions |
+| Validator | `validators/dmr-validator.md` | Pass/fail evaluation |
 
 ---
 

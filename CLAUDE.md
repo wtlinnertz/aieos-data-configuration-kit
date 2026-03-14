@@ -25,11 +25,12 @@ tests/                 # Structural integrity checks
 
 ## Artifact Types
 
-This kit produces three governed artifact types:
+This kit produces four governed artifact types:
 
 1. **Configuration Specification (CSPEC)** — Defines configuration structure, validation rules, default values, and per-environment overrides. Establishes what configuration a system requires and how it should be managed.
 2. **Feature Flag Lifecycle Record (FFLR)** — Tracks feature flags from creation through retirement. Documents flag purpose, current state per environment, rollout history, and retirement criteria. The FFLR is a living document that is re-frozen periodically.
 3. **Data Schema Record (DSR)** — Documents data schema definitions, evolution rules, and migration requirements. Covers database schemas, API contracts, event schemas, and configuration file formats.
+4. **Data Migration Record (DMR)** — Migration planning, validation criteria, and rollback procedures for schema-driven data migrations. 5 hard gates.
 
 Each artifact type has exactly four governing files: spec, template, prompt, validator.
 
@@ -59,6 +60,9 @@ Trigger: Feature flags created (REK)
 Trigger: Schema design (EEK/TDD)
   → Data Schema Record (DSR) → validate → freeze
     (versioned — new version when schemas evolve)
+
+Trigger: DSR frozen with schema changes requiring data migration
+  → Data Migration Record (DMR) → validate → freeze
 ```
 
 ## Boundary Contracts

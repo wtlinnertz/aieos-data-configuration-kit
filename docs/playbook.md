@@ -32,9 +32,17 @@ Trigger C: Schema design (EEK/TDD)
          │ (versioned — new version when schemas evolve)
          ▼
   Outputs to EEK (migration requirements) and REK (schema readiness)
+
+Trigger D: DSR frozen with schema changes requiring data migration
+         │
+         ▼
+  Data Migration Record (DMR) — generated
+         │ Validate → Freeze
+         ▼
+  Outputs to REK (migration readiness) and RRK (rollback procedures)
 ```
 
-The three artifact types are independent of each other. They do not have a sequential dependency — each is triggered by its own upstream event. All three may be active simultaneously for the same initiative.
+CSPEC, FFLR, and DSR are independent of each other — each is triggered by its own upstream event and all three may be active simultaneously for the same initiative. DMR depends on a frozen DSR: it is triggered only when a frozen DSR contains schema changes requiring data migration. If no data migration is needed, document in the ER: "DMR not required — DSR schema changes are purely additive."
 
 ---
 
@@ -229,6 +237,46 @@ When schemas change:
 
 ---
 
+## DMR — Data Migration Record
+
+**Artifact:** Data Migration Record (DMR)
+**Type:** Generated
+**Trigger:** DSR frozen with schema changes requiring data migration
+**Spec:** `docs/specs/dmr-spec.md` (5 hard gates)
+**Template:** `docs/artifacts/dmr-template.md`
+**Prompt:** `docs/prompts/dmr-prompt.md`
+**Validator:** `docs/validators/dmr-validator.md`
+
+### Purpose
+
+The DMR defines migration planning, validation criteria, and rollback procedures for schema-driven data migrations. It translates DSR schema changes into executable migration steps with pre- and post-migration validation, data integrity checks, performance impact estimates, and rollback procedures. The DMR ensures that schema changes documented in the DSR can be safely applied to production data.
+
+### Inputs
+
+- Frozen DSR (from DCK) — schema changes requiring migration (required)
+- Frozen TDD (from EEK) — technical context for migration constraints (recommended)
+- Frozen SAD (from EEK) — system architecture context for migration scope (recommended)
+
+### When DMR Is Not Required
+
+If the frozen DSR contains only purely additive schema changes (new tables, new nullable columns, new optional fields) that do not require any data transformation, backfill, or migration logic, no DMR is needed. Document this decision in the ER Layer 11 section: "DMR not required — DSR schema changes are purely additive."
+
+### Process
+
+1. After the DSR is frozen, review its schema changes to determine whether data migration is required. Additive-only changes (new tables, new nullable columns) do not require a DMR.
+2. In a new AI session, provide: frozen DSR + frozen TDD (recommended) + frozen SAD (recommended) + `docs/specs/dmr-spec.md` + `docs/artifacts/dmr-template.md`. Use the DMR prompt (`docs/prompts/dmr-prompt.md`).
+3. Review the generated DMR. Confirm all schema changes from the DSR that require migration are addressed. Verify rollback procedures are defined for each migration step. Check that validation criteria cover data integrity before and after migration.
+4. Validate in a separate session using `docs/validators/dmr-validator.md` and the spec.
+5. On PASS: human review and freeze.
+6. On FAIL: address blocking issues; re-generate or correct; re-validate.
+
+### Freeze Points
+
+- DMR must be Frozen before migration execution begins
+- A frozen DMR is immutable; changes require the re-entry protocol (new DMR version)
+
+---
+
 ## Freeze Points Summary
 
 | Artifact | Trigger | When Frozen | What It Gates |
@@ -236,6 +284,7 @@ When schemas change:
 | CSPEC | TDD frozen (EEK) | After validation | Config validation criteria for REK; drift detection for RRK |
 | FFLR | Flags created (REK) | After validation (re-frozen periodically) | Stale flag alerts for RRK |
 | DSR | Schema design (EEK/TDD) | After validation | Schema migration execution; downstream schema consumers |
+| DMR | DSR frozen (schema changes requiring migration) | After validation | Migration execution; rollback readiness |
 
 ---
 
@@ -259,7 +308,7 @@ Do not ask the AI that generated an artifact to also validate it in the same ses
 
 When a frozen artifact must be corrected:
 
-1. Identify the artifact to be changed (CSPEC, FFLR, or DSR).
+1. Identify the artifact to be changed (CSPEC, FFLR, DSR, or DMR).
 2. Identify all downstream artifacts or consumers that reference it.
 3. Assess the impact: does the change affect release verification criteria? Does it change drift detection rules? Does it affect schema migration procedures?
 4. Issue a new version of the artifact (e.g., CSPEC v2, DSR v2).
@@ -313,4 +362,6 @@ The Engagement Record (ER) is a project-level artifact that lives in the consumi
 | FFLR frozen (initial or re-freeze) | Add FFLR ID and version to artifact table |
 | DSR frozen | Add DSR ID and version to artifact table |
 | DSR revised (new version) | Add new DSR version; note revision date |
+| DMR frozen | Add DMR ID to artifact table |
+| DMR not required | Note "DMR not required — DSR schema changes are purely additive" in Layer 11 section |
 | FFLR flag retired | Note flag retirement in Layer 11 section |
