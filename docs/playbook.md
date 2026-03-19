@@ -31,7 +31,7 @@ Trigger C: Schema design (EEK/TDD)
          │ Validate → Freeze
          │ (versioned — new version when schemas evolve)
          ▼
-  Outputs to EEK (migration requirements) and REK (schema readiness)
+  Outputs to REK (schema readiness checks) and RRK (migration context for monitoring)
 
 Trigger D: DSR frozen with schema changes requiring data migration
          │
