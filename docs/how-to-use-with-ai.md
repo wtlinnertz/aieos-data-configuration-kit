@@ -1,6 +1,6 @@
 # How to Use This Kit with AI
 
-This guide explains how to set up AI sessions for each artifact type in the Data & Configuration Kit workflow. Follow the session setup instructions precisely — incorrect session setup is the most common cause of poor artifact quality.
+This guide explains how to set up AI sessions for each artifact type in the Data & Configuration Kit workflow. Follow the session setup instructions precisely. Incorrect session setup is the most common cause of poor artifact quality.
 
 ---
 
@@ -8,19 +8,18 @@ This guide explains how to set up AI sessions for each artifact type in the Data
 
 **One artifact per session.** Do not generate multiple artifacts in the same session.
 
-**Separate generation and validation.** Always validate in a new session. Never ask the AI that generated an artifact to validate it — this produces self-validation bias.
+**Separate generation and validation.** Always validate in a new session. Never ask the AI that generated an artifact to validate it. This produces self-validation bias.
 
 **Include full frozen documents.** Do not summarize upstream artifacts. Provide the complete document.
 
----
 
-## CSPEC — Generation Session
+## CSPEC. Generation Session
 
 **Session setup:**
 ```
 Documents to provide:
-1. Frozen TDD (full document — especially config requirements section)
-2. Frozen ORD (full document — config readiness checks)
+1. Frozen TDD (full document. Especially config requirements section)
+2. Frozen ORD (full document. Config readiness checks)
 3. docs/specs/cspec-spec.md
 4. docs/artifacts/cspec-template.md
 
@@ -52,15 +51,14 @@ Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/cspec-validator.md."
 ```
 
----
 
-## FFLR — Generation Session
+## FFLR. Generation Session
 
 **Session setup:**
 ```
 Documents to provide:
-1. Frozen RR (full document — feature flag states at release time)
-2. Frozen RP (full document — flag-based exposure strategy)
+1. Frozen RR (full document. Feature flag states at release time)
+2. Frozen RP (full document. Flag-based exposure strategy)
 3. Previous FFLR version (if updating an existing FFLR)
 4. docs/specs/fflr-spec.md
 5. docs/artifacts/fflr-template.md
@@ -93,9 +91,8 @@ Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/fflr-validator.md."
 ```
 
----
 
-## FFLR — Re-Freeze Session (Living Document Update)
+## FFLR. Re-Freeze Session (Living Document Update)
 
 When updating the FFLR for a flag state change, retirement, or periodic review:
 
@@ -116,14 +113,13 @@ Update the stale flag assessment. Output pure Markdown."
 
 **After update:** Validate and re-freeze using the standard FFLR validation session setup.
 
----
 
-## DSR — Generation Session
+## DSR. Generation Session
 
 **Session setup:**
 ```
 Documents to provide:
-1. Frozen TDD (full document — data models and schema definitions)
+1. Frozen TDD (full document. Data models and schema definitions)
 2. Previous DSR version (if updating for schema evolution)
 3. docs/specs/dsr-spec.md
 4. docs/artifacts/dsr-template.md
@@ -156,7 +152,6 @@ Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/dsr-validator.md."
 ```
 
----
 
 ## Troubleshooting
 

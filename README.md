@@ -1,22 +1,18 @@
 # aieos-data-configuration-kit
 
-**Layer 11 of the AIEOS system — Data & Configuration (Cross-Cutting)**
+Layer 11 of the AIEOS system — Data & Configuration (Cross-Cutting)
 
-This kit governs how configuration is structured, feature flags are managed through their lifecycle, and data schemas evolve across environments. It is a cross-cutting kit that receives inputs from multiple layers and provides outputs to multiple downstream consumers.
+This kit governs how configuration is structured, feature flags are managed through their lifecycle, and data schemas evolve across environments. It's a cross-cutting kit that receives inputs from multiple layers and provides outputs to multiple downstream consumers.
 
----
+## What this kit governs
 
-## What This Kit Does
-
-Engineering produces systems that depend on configuration, feature flags, and data schemas. But "configuration exists" is not the same as "configuration is governed." This kit governs the gap:
+Engineering produces systems that depend on configuration, feature flags, and data schemas. But "configuration exists" is not the same as "configuration is governed." This kit fills the gap:
 
 - **Configuration structure** — What configuration does a system require? What are the valid values, defaults, and per-environment overrides?
 - **Feature flag lifecycle** — What flags exist, what state are they in per environment, when should they be retired?
 - **Data schema evolution** — How do schemas change over time? What are the compatibility requirements and migration procedures?
 
----
-
-## Artifact Types
+## Artifact types
 
 This kit produces three governed artifact types:
 
@@ -28,17 +24,13 @@ This kit produces three governed artifact types:
 
 Each governed artifact type has exactly four governing files: spec, template, prompt, validator.
 
----
+## Getting started
 
-## Quick Start
+1. Read `docs/playbook.md` for the complete process definition
+2. Read `docs/how-to-use-with-ai.md` for session setup and AI tool guidance
+3. See `docs/entry-from-eek.md` for the boundary briefing when arriving from the Engineering Execution Kit
 
-1. Read `docs/playbook.md` — the complete process definition
-2. Read `docs/how-to-use-with-ai.md` — session setup and AI tool guidance
-3. See `docs/entry-from-eek.md` — boundary briefing when arriving from the Engineering Execution Kit
-
----
-
-## Repository Structure
+## Repository structure
 
 ```
 docs/
@@ -59,15 +51,13 @@ tests/
 CLAUDE.md              # AI operating instructions
 ```
 
----
-
-## AIEOS Layer
+## AIEOS layer
 
 | Layer | Kit | Status |
 |-------|-----|--------|
 | 4. Engineering Execution | `aieos-engineering-execution-kit` | Built |
 | 5. Release & Exposure | `aieos-release-exposure-kit` | Built |
 | 6. Reliability & Resilience | `aieos-reliability-resilience-kit` | Built |
-| **11. Data & Configuration** | **`aieos-data-configuration-kit`** | **Built** |
+| 11. Data & Configuration | `aieos-data-configuration-kit` | Built |
 
 See `aieos-governance-foundation/docs/layer-model.md` for the full layer model.
