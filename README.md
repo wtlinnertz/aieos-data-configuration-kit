@@ -24,6 +24,19 @@ This kit produces three governed artifact types:
 
 Each governed artifact type has exactly four governing files: spec, template, prompt, validator.
 
+## DCK Trigger Classes
+
+DCK artifacts are not all triggered at the same point in the pipeline. There are two distinct trigger classes:
+
+**Class 1 — EEK-triggered (after TDD freeze):**
+- Configuration Specification (CSPEC) — triggered after TDD freeze when configuration structure and schema content are known; runs in parallel with EEK continuation
+- Data Schema Record (DSR) — triggered after TDD freeze when schema design is complete; runs in parallel with EEK continuation
+
+**Class 2 — REK-triggered (during REK execution):**
+- Feature Flag Lifecycle Record (FFLR) — triggered when feature flags are created during REK execution
+
+IMPORTANT: Do NOT generate the FFLR during EEK. Feature flags do not exist at that point — they are created during release execution in REK. Generating an FFLR during EEK would produce an artifact with no real flags to track.
+
 ## Getting started
 
 1. Read `docs/playbook.md` for the complete process definition

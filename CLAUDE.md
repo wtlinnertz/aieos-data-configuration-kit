@@ -65,6 +65,19 @@ Trigger: DSR frozen with schema changes requiring data migration
   → Data Migration Record (DMR) → validate → freeze
 ```
 
+## DCK Trigger Classes
+
+DCK has two distinct trigger classes — do not conflate them:
+
+**Class 1 — EEK-triggered** (after TDD freeze, parallel with EEK continuation):
+- CSPEC: triggered after TDD freeze; config structure and schema content must be known
+- DSR: triggered after TDD freeze; schema design must be complete
+
+**Class 2 — REK-triggered** (during REK execution, not EEK):
+- FFLR: triggered when feature flags are actually created during REK execution
+
+Do NOT generate FFLR during EEK — feature flags do not exist at that point. Generating an FFLR before flags are created produces an artifact with nothing to track.
+
 ## Boundary Contracts
 
 - **Upstream (EEK):** Receives frozen TDD (config requirements, data models) and ORD (config readiness checks). See `docs/entry-from-eek.md` for the boundary briefing.
