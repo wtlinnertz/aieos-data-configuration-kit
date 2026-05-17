@@ -55,7 +55,7 @@ CLAUDE.md              # AI operating instructions
 
 | Layer | Kit | Status |
 |-------|-----|--------|
-| 4. Engineering Execution | `aieos-engineering-execution-kit` | Built |
+| 4. Engineering Execution | `aieos-engineering-execution` | Built |
 | 5. Release & Exposure | `aieos-release-exposure-kit` | Built |
 | 6. Reliability & Resilience | `aieos-reliability-resilience-kit` | Built |
 | 11. Data & Configuration | `aieos-data-configuration-kit` | Built |
