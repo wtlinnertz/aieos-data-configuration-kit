@@ -28,7 +28,6 @@ The FFLR spec defines four flag types: release, ops, experiment, permission. If 
 
 The DSR spec requires compatibility rules (backward/forward). If your organization has specific compatibility standards (e.g., "all API changes must be backward compatible for 2 major versions"), document them in a principles file.
 
-
 ## What Not to Adapt
 
 ### Specs
@@ -45,7 +44,6 @@ Validators evaluate against specs. If a validator is producing unexpected result
 
 `docs/governance-model.md` is a synchronized copy of the canonical governance model. Do not edit it. If you believe the governance model should change, update `aieos-governance-foundation/governance-model.md` and sync all kit copies.
 
-
 ## Adding Artifact Types
 
 If your organization needs additional governed artifacts (e.g., a secrets rotation record, an environment provisioning spec), follow the four-file system:
@@ -56,7 +54,6 @@ If your organization needs additional governed artifacts (e.g., a secrets rotati
 4. Write the prompt. Generation behavior, references spec and template
 
 Register the new artifact type in the playbook, index, and CLAUDE.md.
-
 
 ## Tool Bindings
 
@@ -72,7 +69,6 @@ docs/bindings/
 ```
 
 Bindings are not governed artifacts. They have no spec, validator, or prompt. update them when your tooling changes without touching the governed files.
-
 
 ## First-Time Setup Checklist
 
