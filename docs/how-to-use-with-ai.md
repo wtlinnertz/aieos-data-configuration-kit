@@ -12,7 +12,6 @@ This guide explains how to set up AI sessions for each artifact type in the Data
 
 **Include full frozen documents.** Do not summarize upstream artifacts. Provide the complete document.
 
-
 ## CSPEC. Generation Session
 
 **Session setup:**
@@ -50,7 +49,6 @@ Use only the spec as the source of truth for pass/fail criteria.
 Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/cspec-validator.md."
 ```
-
 
 ## FFLR. Generation Session
 
@@ -91,7 +89,6 @@ Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/fflr-validator.md."
 ```
 
-
 ## FFLR. Re-Freeze Session (Living Document Update)
 
 When updating the FFLR for a flag state change, retirement, or periodic review:
@@ -112,7 +109,6 @@ Update the stale flag assessment. Output pure Markdown."
 ```
 
 **After update:** Validate and re-freeze using the standard FFLR validation session setup.
-
 
 ## DSR. Generation Session
 
@@ -151,7 +147,6 @@ Use only the spec as the source of truth for pass/fail criteria.
 Do not suggest improvements. Judge only what is explicitly present.
 Output JSON using the format defined in docs/validators/dsr-validator.md."
 ```
-
 
 ## Troubleshooting
 
