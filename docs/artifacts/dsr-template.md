@@ -6,11 +6,11 @@
 
 | Field | Value |
 |-------|-------|
-| DSR ID | DSR-{PROJECT}-{NNN} |
+| Artifact ID | DSR-{PROJECT}-{NNN} |
 | System Name | {system name} |
 | Owner | {team or role — not an individual person} |
 | Version | v{N} |
-| Status | Draft / Validated / Freeze Pending / Frozen |
+| Status | DRAFT |
 | TDD Reference | {TDD-{PROJECT}-{NNN}} |
 | Governance Model Version | 1.0 |
 | Prompt Version | {prompt version} |

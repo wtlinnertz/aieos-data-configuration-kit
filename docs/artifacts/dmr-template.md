@@ -4,11 +4,11 @@
 
 | Field | Value |
 |-------|-------|
-| DMR ID | DMR-{INITIATIVE}-{NNN} |
+| Artifact ID | DMR-{INITIATIVE}-{NNN} |
 | Initiative | {full initiative name} |
 | Owner | {team or role responsible for migration execution} |
 | Version | v1.0 |
-| Status | Draft |
+| Status | DRAFT |
 | DSR Reference | {DSR artifact ID and version} |
 | Governance Model Version | {version from §15 of governance-model.md} |
 | Prompt Version | {prompt file version used} |
