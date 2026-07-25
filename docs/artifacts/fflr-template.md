@@ -6,11 +6,11 @@
 
 | Field | Value |
 |-------|-------|
-| FFLR ID | FFLR-{PROJECT}-{NNN} |
+| Artifact ID | FFLR-{PROJECT}-{NNN} |
 | System Name | {system name} |
 | Owner | {team or role — not an individual person} |
 | Version | v{N} |
-| Status | Draft / Validated / Freeze Pending / Frozen |
+| Status | DRAFT |
 | RR Reference | {RR-{PROJECT}-{NNN}} |
 | Assessment Date | {YYYY-MM-DD} |
 | Governance Model Version | 1.0 |
